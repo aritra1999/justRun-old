@@ -1,0 +1,78 @@
+{% load static %}
+<!doctype html>
+<html lang="en" class="text-gray-900 antialiased leading-tight">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=0.8, minimum-scale=0.8"/>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="shortcut icon" href="https://www.flaticon.com/svg/static/icons/svg/1827/1827966.svg" type="image/x-icon" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+    <title>JustRun | {{ title }}</title>
+</head>
+<body onload="startup()">
+{% include 'base/code-editor-header.html' %}
+
+<div class="alert processing hidden" id="processing">
+    <img src="{% static 'img/loading.svg' %} " height="20px" alt="" style="margin-right: 15px">
+    Processing . . .
+</div>
+
+<div class="alert error hidden" id="error" >
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    <div id="message_error"></div>
+</div>
+
+<div class="alert success hidden" id="success">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+
+    <div id="message_success"></div>
+    <br>
+    <div id="time"></div>
+    <div id="mem"></div>
+</div>
+
+<div class="mobile">
+    Mobile Screen.
+</div>
+<div class="container">
+    <div class="editor-container">
+        <div id="editor">{% include 'code-template/template.cpp' %}</div>
+        <textarea name="submission" id="submission" style="display:none;"></textarea>
+        {% csrf_token %}
+    </div>
+
+    <div class="io">
+
+        <div class="input">
+            <h3 class="io-heading">Input</h3>
+            <div class="io-container">
+                <textarea name="input" id="input" class="io-field" spellcheck="false"></textarea>
+            </div>
+        </div>
+        <div class="output">
+            <h3 class="io-heading">
+                Output
+            </h3>
+            <div io-container>
+                <div id="output" class="io-field"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="{% static 'ace/ace.js' %}" type="text/javascript" charset="utf-8"></script>
+<script src="{% static 'ace/ext-modelist.js' %}" type="text/javascript" charset="utf-8"></script>
+<script src="{% static 'ace/ext-language_tools.js' %}" type="text/javascript" charset="utf-8"></script>
+<script src="{% static 'js/script.js' %}"></script>
+
+</body>
+</html>

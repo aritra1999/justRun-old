@@ -1,0 +1,74 @@
+<nav class="nav">
+    <div class="logo">
+        <img src="https://www.flaticon.com/svg/static/icons/svg/1827/1827966.svg" class="logo-img" height="20px" alt="">
+        <a href="" class="logo-name">JustRun</a>
+    </div>
+    <div class="options">
+        <ul>
+            <li>
+                <select name="language" id="language" class="select-dropdown" onchange="changeLang(language)">
+                    <option value="c_cpp">C++</option>
+                    <option value="c_cpp">C</option>
+                    <option value="python">Python</option>
+                    <option value="java">Java</option>
+{#                    <option value="javascript">JS</option>#}
+                </select>
+            </li>
+            <li>
+                <select name="theme" id="theme" class="select-dropdown" onchange="changeTheme(theme)">
+                    <optgroup label="Bright">
+                        <option class="theme-option" value="chrome">Chrome</option>
+                        <option class="theme-option" value="clouds">Clouds</option>
+                        <option class="theme-option" value="crimson_editor">Crimson Editor</option>
+                        <option class="theme-option" value="dawn">Dawn</option>
+                        <option class="theme-option" value="dreamweaver">Dreamweaver</option>
+                        <option class="theme-option" value="eclipse">Eclipse</option>
+                        <option class="theme-option" value="github">GitHub</option>
+                        <option class="theme-option" value="iplastic">IPlastic</option>
+                        <option class="theme-option" value="solarized_light">Solarized Light</option>
+                        <option class="theme-option" value="textmate">TextMate</option>
+                        <option class="theme-option" value="tomorrow">Tomorrow</option>
+                        <option class="theme-option" value="xcode">Xcode</option>
+                        <option class="theme-option" value="kuroir">Kuroir</option>
+                        <option class="theme-option" value="katzenmilch">KatzenMilch</option>
+                        <option class="theme-option" value="sqlserver">SQL Server</option>
+                    </optgroup>
+                    <optgroup label="Dark">
+                        <option class="theme-option" value="ambiance">Ambiance</option>
+                        <option class="theme-option" value="chaos">Chaos</option>
+                        <option class="theme-option" value="clouds_midnight">Clouds Midnight</option>
+                        <option class="theme-option" value="dracula">Dracula</option>
+                        <option class="theme-option" value="cobalt">Cobalt</option>
+                        <option class="theme-option" value="gruvbox">Gruvbox</option>
+                        <option class="theme-option" value="gob">Green on Black</option>
+                        <option class="theme-option" value="idle_fingers">idle Fingers</option>
+                        <option class="theme-option" value="kr_theme">krTheme</option>
+                        <option class="theme-option" value="merbivore">Merbivore</option>
+                        <option class="theme-option" value="merbivore_soft">Merbivore Soft</option>
+                        <option class="theme-option" value="mono_industrial">Mono Industrial</option>
+                        <option class="theme-option" value="monokai" selected>Monokai</option>
+                        <option class="theme-option" value="nord_dark">Nord Dark</option>
+                        <option class="theme-option" value="pastel_on_dark">Pastel on dark</option>
+                        <option class="theme-option" value="solarized_dark">Solarized Dark</option>
+                        <option class="theme-option" value="terminal">Terminal</option>
+                        <option class="theme-option" value="tomorrow_night">Tomorrow Night</option>
+                        <option class="theme-option" value="tomorrow_night_blue">Tomorrow Night Blue
+                        </option>
+                        <option class="theme-option" value="tomorrow_night_bright">Tomorrow Night Bright
+                        </option>
+                        <option class="theme-option" value="tomorrow_night_eighties">Tomorrow Night 80s
+                        </option>
+                        <option class="theme-option" value="twilight">Twilight</option>
+                        <option class="theme-option" value="vibrant_ink">Vibrant Ink</option>
+                    </optgroup>
+                </select>
+            </li>
+            <li>
+                <button class="run" id="run" onclick="submit()">
+                    Run
+                </button>
+            </li>
+        </ul>
+    </div>
+</nav>
+
