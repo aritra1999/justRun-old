@@ -54,13 +54,19 @@ function submit() {
         }
     })
         .done(function (data, status) {
-            $('#output').text(data.output);
+
             if(data.verdict === "success"){
                 $('#message_success').text(data.message);
+                $('#output').text(data.output);
                 $("#success").css({"display": "block"});
                 $('#time').text("Time taken: " + data.time + " s. ");
-                $('#mem').text("Memory used: " + data.time + " KB.");
+                $('#mem').text("Memory used: " + data.memory + " KB.");
             }else{
+                var error_messages = data.output.split("<br>");
+                for(error_message in error_messages){
+                    $("#output").append(error_messages[error_message] + "<br>");
+                }
+
                 $('#message_error').text(data.message);
                 $("#error").css({"display": "block"});
             }
