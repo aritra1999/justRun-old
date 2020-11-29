@@ -20,7 +20,6 @@ editor.setOptions({
 });
 
 function startup() {
-    console.log("Starting Editor");
 }
 
 function changeLang(language) {
@@ -60,7 +59,7 @@ function submit() {
                 $('#output').text(data.output);
                 $("#success").css({"display": "block"});
                 $('#time').text("Time taken: " + data.time + " s. ");
-                $('#mem').text("Memory used: " + data.memory + " KB.");
+                $('#mem').text("Memory used: " + data.memory + " MB.");
             }else{
                 var error_messages = data.output.split("<br>");
                 for(error_message in error_messages){

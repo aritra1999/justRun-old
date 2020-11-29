@@ -50,7 +50,7 @@ a {
     background-color: transparent;
     width: 93%;
     height: 37vh;
-
+    overflow-y: scroll;
     border-left: 5px solid #2c2c2c;
     border-right: none;
     border-top: none;
@@ -66,6 +66,7 @@ a {
 
     font-family: 'Poppins', sans-serif;
     letter-spacing: 1px;
+    font-size: 12px;
 }
 
 
