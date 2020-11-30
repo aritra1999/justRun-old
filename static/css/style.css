@@ -133,7 +133,6 @@ select {
 }
 
 select.select-dropdown {
-    /*background: url(https://www.flaticon.com/svg/static/icons/svg/752/752656.svg);*/
     background: url(../img/down.svg);
     background-position: calc(100% - 15px) calc(1.1em), calc(100% - 15px) calc(1em + 2px), calc(100% - .5em) .5em;
     background-size: 10px 10px, 10px 10px, 1.5em 1.5em;
@@ -189,7 +188,7 @@ option {
     position: absolute;
     background-color: #e8f8ff;
     border-radius: 4px;
-    color: #05051f;
+    color: #0c0c10;
 
 }
 
@@ -214,15 +213,15 @@ option {
 }
 
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 5px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: #2c2c2c;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #888;
+    background: #8f8f8f;;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -233,12 +232,12 @@ option {
     display: none;
 }
 
-.output-meta{
+.output-meta {
     float: right;
     font-weight: 400;
 }
 
-#time, #mem{
+#time, #mem {
     font-size: 12px;
     margin: 0 3px;
 }
@@ -249,7 +248,18 @@ option {
     }
 
     .mobile {
-        display: block;
+        display: flex;
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+    .mobile-container {
+        width: 300px;
+        height: 300px;
     }
 
     .pc {

@@ -10,7 +10,7 @@ editor.setOptions({
 
 editor.setTheme("ace/theme/monokai");
 editor.session.setMode("ace/mode/c_cpp");
-editor.setFontSize(15);
+editor.setFontSize(16);
 
 
 editor.setOptions({
@@ -20,10 +20,35 @@ editor.setOptions({
 });
 
 function startup() {
+    // editor.setValue(code, -1)
+
+    fetch("static/code-template/template.cpp")
+        .then(response => response.text())
+        .then(
+            data =>{
+                editor.setValue(data);
+                editor.clearSelection();
+            });
+
+}
+
+function get_ext(lang){
+    if(lang === "c" || lang === "cpp")return "c_cpp";
+    else return lang;
 }
 
 function changeLang(language) {
-    editor.session.setMode("ace/mode/" + language.value);
+
+    fetch("static/code-template/template." + language.value)
+        .then(response => response.text())
+        .then(
+            data =>{
+                editor.setValue(data);
+                editor.clearSelection();
+            });
+
+    editor.session.setMode("ace/mode/" + get_ext(language.value));
+
 }
 
 function changeTheme(theme) {
@@ -37,7 +62,7 @@ function submit() {
     $('#output').empty();
 
     var code = editor.getSession().getValue();
-    var language = document.getElementById('language').value;
+    var language = get_ext(document.getElementById('language').value);
     var input = document.getElementById('input').value;
     var csrf = document.getElementsByName('csrfmiddlewaretoken')[0].value;
 
