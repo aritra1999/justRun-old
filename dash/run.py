@@ -83,7 +83,29 @@ def run_code(code, input, lang):
         else:
             timeEnd = time.time() - timeStart
             size = (((os.stat(slug + ".py").st_size) / 1024) / 1024)
+    elif lang == "java":
+        lang_ext = ".java"
+        open(slug + lang_ext, "x").write(code)
 
+
+        # 3. Defining Compile and Run commands.
+        run_command = "java " + slug + ".java <" + slug + ".in> " + slug + ".out"
+
+
+        # 5. Execute Run Command. | Compile + Run
+        timeStart = time.time()
+        compile_call = Popen([run_command], stdin=PIPE, stdout=PIPE, stderr=PIPE, universal_newlines=True, shell=True)
+        run_out, run_err = compile_call.communicate()
+
+        if run_err:
+            error = str(run_err)
+            error = error.replace(slug, "code")
+
+            remove_user_files(slug, [lang_ext, ".in"])
+            return ("error", "Compilation Error", error, None, None)
+        else:
+            timeEnd = time.time() - timeStart
+            size = (((os.stat(slug + ".java").st_size) / 1024) / 1024)
     else:
         return ("error", "Invalid language!", "", None, None)
 
