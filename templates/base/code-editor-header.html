@@ -9,7 +9,7 @@
                 <select name="language" id="language" class="select-dropdown" onchange="changeLang(language)">
                     <option value="cpp">C++</option>
                     <option value="c">C</option>
-                    <option value="python">Python</option>
+                    <option value="python">Python 3</option>
                     <option value="java">Java</option>
 {#                    <option value="javascript">JS</option>#}
                 </select>
@@ -66,6 +66,9 @@
             <li>
                 <button class="run" id="run" onclick="submit()">
                     Run
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#ffffff">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={4} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
                 </button>
             </li>
         </ul>

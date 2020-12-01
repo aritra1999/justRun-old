@@ -2,9 +2,13 @@ from django.http import JsonResponse
 from django.shortcuts import render
 
 from .utils import (
-    run_code,
-    round_off,
+    round_off
 )
+
+from .run import (
+    run_code
+)
+
 
 def home_view(request):
     context = {

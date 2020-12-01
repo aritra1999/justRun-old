@@ -57,7 +57,7 @@ function changeTheme(theme) {
 
 function submit() {
 
-    $("#run").prop("disabled", true);
+
     $("#processing").css({"display": "block"});
     $('#output').empty();
 
@@ -103,5 +103,5 @@ function submit() {
             $("#processing").css({"display": "none"});
         });
 
-    $("#run").prop("disabled", false);
+
 }

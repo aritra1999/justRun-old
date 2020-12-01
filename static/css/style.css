@@ -159,6 +159,15 @@ option {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
 
+    display: inline-flex;
+    align-self: center;
+}
+
+.run svg{
+    height:1em;
+    width:1em;
+    margin: auto 0 auto 10px;
+    color: #ffffff !important;
 }
 
 .alert {
