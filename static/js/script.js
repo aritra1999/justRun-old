@@ -77,7 +77,7 @@ function submit() {
             csrfmiddlewaretoken: csrf,
         }
     })
-        .done(function (data, status) {
+        .done(function (data, statuyouts) {
 
             if(data.verdict === "success"){
                 $('#message_success').text(data.message);
