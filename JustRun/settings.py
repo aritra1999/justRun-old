@@ -26,12 +26,12 @@ SECRET_KEY = 'ta%e!07@s)!ordh@(dr57iby=-436!rkntau(g+*twdfy9!n@3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['justrunbeta.herokuapp.com', 'localhost', '52.172.165.197']
+ALLOWED_HOSTS = ['justrunbeta.herokuapp.com', 'localhost', '104.211.117.81']
 
 
 # Application definition
-
 INSTALLED_APPS = [
+    'dash',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -121,8 +121,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-# STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_DIRS = [os.path.join(BASE_DIR, "static")]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
