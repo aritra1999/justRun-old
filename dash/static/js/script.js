@@ -20,16 +20,27 @@ editor.setOptions({
 });
 
 function startup() {
-    // editor.setValue(code, -1)
 
-    fetch("static/code-template/template.cpp")
-        .then(response => response.text())
-        .then(
-            data =>{
-                editor.setValue(data);
-                editor.clearSelection();
-            });
+    let code = localStorage.getItem("code");
+    let language = localStorage.getItem("language");
+    let input = localStorage.getItem("input")
 
+    if(code != null){
+        editor.setValue(code)
+        editor.session.setMode("ace/mode/" + get_ext(language))
+        document.getElementById("input").innerHTML = input;
+        document.getElementById("language").value = language;
+        console.log(language, code, input);
+    }
+    else {
+        fetch("static/code-template/template.cpp")
+            .then(response => response.text())
+            .then(
+                data => {
+                    editor.setValue(data);
+                    editor.clearSelection();
+                });
+    }
 }
 
 function get_ext(lang){
@@ -66,6 +77,9 @@ function submit() {
     var input = document.getElementById('input').value;
     var csrf = document.getElementsByName('csrfmiddlewaretoken')[0].value;
 
+    localStorage.setItem("code", code);
+    localStorage.setItem("language", language);
+    localStorage.setItem("input", input);
 
     $.ajax({
         method: 'POST',
@@ -78,23 +92,16 @@ function submit() {
         }
     })
         .done(function (data, statuyouts) {
-
+            document.getElementById('output').innerText = data.output;
             if(data.verdict === "success"){
                 $('#message_success').text(data.message);
-                $('#output').text(data.output);
                 $("#success").css({"display": "block"});
                 $('#time').text("Time taken: " + data.time + " s. ");
                 $('#mem').text("Memory used: " + data.memory + " MB.");
             }else{
-                var error_messages = data.output.split("<br>");
-                for(error_message in error_messages){
-                    $("#output").append(error_messages[error_message] + "<br>");
-                }
-
                 $('#message_error').text(data.message);
                 $("#error").css({"display": "block"});
             }
-
             $("#processing").css({"display": "none"});
         })
         .fail(function (data, status) {

@@ -45,7 +45,7 @@ def run_code(code, input, lang):
 
         if com_err:
             error = str(com_err)
-            error = error.replace(slug, "<br>code")
+            error = error.replace(slug, "code")
 
             remove_user_files(slug, [lang_ext, ".in"])
             return ("error", "Compilation Error", error, None, None)
