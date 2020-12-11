@@ -30,7 +30,7 @@ function startup() {
         editor.session.setMode("ace/mode/" + get_ext(language))
         document.getElementById("input").innerHTML = input;
         document.getElementById("language").value = language;
-        console.log(language);
+
     }
     else {
         fetch("static/code-template/template.cpp")
