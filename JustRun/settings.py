@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['justrunbeta.herokuapp.com', 'localhost', '104.211.117.81', 'ju
 # Application definition
 INSTALLED_APPS = [
     'dash',
+    'logs',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
