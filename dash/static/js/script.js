@@ -30,7 +30,7 @@ function startup() {
         editor.session.setMode("ace/mode/" + get_ext(language))
         document.getElementById("input").innerHTML = input;
         document.getElementById("language").value = language;
-
+        console.log(language);
     }
     else {
         fetch("static/code-template/template.cpp")
@@ -78,7 +78,7 @@ function submit() {
     var csrf = document.getElementsByName('csrfmiddlewaretoken')[0].value;
 
     localStorage.setItem("code", code);
-    localStorage.setItem("language", language);
+    localStorage.setItem("language", document.getElementById('language').value);
     localStorage.setItem("input", input);
 
     $.ajax({
