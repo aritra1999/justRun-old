@@ -17,14 +17,14 @@
         <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
             <img src="https://www.flaticon.com/svg/static/icons/svg/1827/1827966.svg" class="h-10 mr-5" height="20px"
                  alt="">
-            <a href="" class="logo-name">JustRun | <small>Beta</small></a>
+            <a href="{% url 'home' %}" class="logo-name">JustRun | <small>Beta</small></a>
         </a>
         <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-            <a class="mr-5 hover:text-gray-900">View Source</a>
-            <a class="mr-5 hover:text-gray-900">Back to IDE</a>
+            <a href="https://aritra1999.github.io" class="mr-5 hover:text-gray-900">About Me</a>
+            <a href="{% url 'home' %}" class="mr-5 hover:text-gray-900">Back to IDE</a>
         </nav>
-        <button class="inline-flex items-center bg-gray-200 border-0 py-2 px-3 focus:outline-none hover:bg-gray-300 rounded text-base mt-4 md:mt-0">
-            <a class="hover:text-gray-900">View Source</a>
+        <button class="inline-flex items-center bg-indigo-100 font-medium text-indigo-900 border-0 py-2 px-3 focus:outline-none hover:bg-indigo-300 rounded text-base mt-4 md:mt-0">
+            <a href="https://github.com/aritra1999/JustRun" class="hover:text-gray-900">View Source</a>
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                  class="w-4 h-4 ml-1" viewBox="0 0 24 24">
                 <path d="M5 12h14M12 5l7 7-7 7"></path>
@@ -40,7 +40,9 @@
     </div>
 </section>
 <section class="text-gray-700 body-font">
-    <div class="container px-5 py-10 mx-auto">
+    <div class="container px-5 py-1 mx-auto">
+        <h2>Last 10 submissions:</h2>
+        <br>
         <div class="flex flex-col">
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
