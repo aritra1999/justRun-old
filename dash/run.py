@@ -47,7 +47,7 @@ def run_code(code, input, lang):
             error = str(com_err)
             error = error.replace(slug, "code")
 
-            remove_user_files(slug, [lang_ext, ".in"])
+            remove_user_files(slug, [lang_ext, ".in", ".out", ""])
             return ("error", "Compilation Error", error, None, None)
         else:
             # 5. Execute Run Command.
@@ -78,7 +78,7 @@ def run_code(code, input, lang):
             error = str(run_err)
             error = error.replace(slug, "code")
 
-            remove_user_files(slug, [lang_ext, ".in"])
+            remove_user_files(slug, [lang_ext, ".in", ".out", ""])
             return ("error", "Compilation Error", error, None, None)
         else:
             timeEnd = time.time() - timeStart
@@ -92,7 +92,7 @@ def run_code(code, input, lang):
     try:
         output = open(slug + ".out", "r").read()
     except:
-        remove_user_files(slug, [lang_ext, ".in", ".out"])
+        remove_user_files(slug, [lang_ext, ".in", ".out", ""])
         return ("error", "Error in execution!", "", None, None)
 
 
