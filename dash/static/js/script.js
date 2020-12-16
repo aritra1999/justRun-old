@@ -19,20 +19,21 @@ editor.setOptions({
     enableLiveAutocompletion: true,
 });
 
+editor.clearSelection();
+
 function startup() {
 
     let code = localStorage.getItem("code");
     let language = localStorage.getItem("language");
     let input = localStorage.getItem("input")
 
-    if(code != null){
+    if (code != null) {
         editor.setValue(code)
         editor.session.setMode("ace/mode/" + get_ext(language))
         document.getElementById("input").innerHTML = input;
         document.getElementById("language").value = language;
 
-    }
-    else {
+    } else {
         fetch("static/code-template/template.cpp")
             .then(response => response.text())
             .then(
@@ -43,8 +44,26 @@ function startup() {
     }
 }
 
-function get_ext(lang){
-    if(lang === "c" || lang === "cpp")return "c_cpp";
+
+function download(){
+    var mimeType = document.getElementById('language').value;
+    if(mimeType === "python"){
+        mimeType = "py";
+    }
+
+    var filename = "code." + mimeType;
+    var elHtml = editor.getSession().getValue();
+    var link = document.createElement('a');
+    mimeType = mimeType || 'text/plain';
+
+    link.setAttribute('download', filename);
+    link.setAttribute('href', 'data:' + mimeType  +  ';charset=utf-8,' + encodeURIComponent(elHtml));
+    link.click();
+}
+
+
+function get_ext(lang) {
+    if (lang === "c" || lang === "cpp") return "c_cpp";
     else return lang;
 }
 
@@ -53,7 +72,7 @@ function changeLang(language) {
     fetch("static/code-template/template." + language.value)
         .then(response => response.text())
         .then(
-            data =>{
+            data => {
                 editor.setValue(data);
                 editor.clearSelection();
             });
@@ -93,12 +112,12 @@ function submit() {
     })
         .done(function (data, statuyouts) {
             document.getElementById('output').innerText = data.output;
-            if(data.verdict === "success"){
+            if (data.verdict === "success") {
                 $('#message_success').text(data.message);
                 $("#success").css({"display": "block"});
                 $('#time').text("Time taken: " + data.time + " s. ");
                 $('#mem').text("Memory used: " + data.memory + " MB.");
-            }else{
+            } else {
                 $('#message_error').text(data.message);
                 $("#error").css({"display": "block"});
             }
@@ -109,6 +128,4 @@ function submit() {
             $("#error").css({"display": "block"});
             $("#processing").css({"display": "none"});
         });
-
-
 }
