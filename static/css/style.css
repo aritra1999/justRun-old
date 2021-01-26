@@ -126,7 +126,7 @@ select {
 
 .options ul li {
     display: inline;
-    margin: 0 20px;
+    margin: 0 7px;
     font-weight: 500;
     width: 100px;
     font-size: 1rem;
@@ -150,7 +150,7 @@ option {
 }
 
 .run {
-    padding: 0.7em 3.5em;
+    padding: 0.7em 2em;
     background-color: #ff4f30;
     border: 2px solid #ff4f30;
     border-radius: 4px;
@@ -163,11 +163,24 @@ option {
     align-self: center;
 }
 
-.run svg{
-    height:1em;
-    width:1em;
+.download{
+    padding: 0.7em 2em;
+    background-color: #ffc800;
+    border: 2px solid #ffc800;
+    border-radius: 4px;
+    color: #12072d;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+
+    display: inline-flex;
+    align-self: center;
+}
+
+.run svg, .download svg {
+    height: 1em;
+    width: 1em;
     margin: auto 0 auto 10px;
-    color: #ffffff !important;
 }
 
 .alert {

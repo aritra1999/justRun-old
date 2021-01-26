@@ -26,7 +26,8 @@ SECRET_KEY = 'ta%e!07@s)!ordh@(dr57iby=-436!rkntau(g+*twdfy9!n@3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['justrunbeta.herokuapp.com', 'localhost', '104.211.117.81', 'justrun.ml']
+# ALLOWED_HOSTS = ['justrunbeta.herokuapp.com', 'localhost', '104.211.117.81', 'justrun.ml']
+ALLOWED_HOSTS = ['ec2-34-207-116-13.compute-1.amazonaws.com', '34.207.116.13`', 'localhost']
 
 
 # Application definition
@@ -42,7 +43,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'whitenoise.middleware.WhiteNoiseMiddleware',    
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',    
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -84,8 +85,8 @@ DATABASES = {
     }
 }
 
-import django_heroku
-django_heroku.settings(locals())
+# import django_heroku
+# django_heroku.settings(locals())
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -125,7 +126,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # STATIC_DIRS = [os.path.join(BASE_DIR, "static")]
 

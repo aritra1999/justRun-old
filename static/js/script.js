@@ -19,21 +19,51 @@ editor.setOptions({
     enableLiveAutocompletion: true,
 });
 
+editor.clearSelection();
+
 function startup() {
-    // editor.setValue(code, -1)
 
-    fetch("static/code-template/template.cpp")
-        .then(response => response.text())
-        .then(
-            data =>{
-                editor.setValue(data);
-                editor.clearSelection();
-            });
+    let code = localStorage.getItem("code");
+    let language = localStorage.getItem("language");
+    let input = localStorage.getItem("input")
 
+    if (code != null) {
+        editor.setValue(code)
+        editor.session.setMode("ace/mode/" + get_ext(language))
+        document.getElementById("input").innerHTML = input;
+        document.getElementById("language").value = language;
+
+    } else {
+        fetch("static/code-template/template.cpp")
+            .then(response => response.text())
+            .then(
+                data => {
+                    editor.setValue(data);
+                    editor.clearSelection();
+                });
+    }
 }
 
-function get_ext(lang){
-    if(lang === "c" || lang === "cpp")return "c_cpp";
+
+function download(){
+    var mimeType = document.getElementById('language').value;
+    if(mimeType === "python"){
+        mimeType = "py";
+    }
+
+    var filename = "code." + mimeType;
+    var elHtml = editor.getSession().getValue();
+    var link = document.createElement('a');
+    mimeType = mimeType || 'text/plain';
+
+    link.setAttribute('download', filename);
+    link.setAttribute('href', 'data:' + mimeType  +  ';charset=utf-8,' + encodeURIComponent(elHtml));
+    link.click();
+}
+
+
+function get_ext(lang) {
+    if (lang === "c" || lang === "cpp") return "c_cpp";
     else return lang;
 }
 
@@ -42,7 +72,7 @@ function changeLang(language) {
     fetch("static/code-template/template." + language.value)
         .then(response => response.text())
         .then(
-            data =>{
+            data => {
                 editor.setValue(data);
                 editor.clearSelection();
             });
@@ -66,6 +96,9 @@ function submit() {
     var input = document.getElementById('input').value;
     var csrf = document.getElementsByName('csrfmiddlewaretoken')[0].value;
 
+    localStorage.setItem("code", code);
+    localStorage.setItem("language", document.getElementById('language').value);
+    localStorage.setItem("input", input);
 
     $.ajax({
         method: 'POST',
@@ -78,23 +111,16 @@ function submit() {
         }
     })
         .done(function (data, statuyouts) {
-
-            if(data.verdict === "success"){
+            document.getElementById('output').innerText = data.output;
+            if (data.verdict === "success") {
                 $('#message_success').text(data.message);
-                $('#output').text(data.output);
                 $("#success").css({"display": "block"});
                 $('#time').text("Time taken: " + data.time + " s. ");
                 $('#mem').text("Memory used: " + data.memory + " MB.");
-            }else{
-                var error_messages = data.output.split("<br>");
-                for(error_message in error_messages){
-                    $("#output").append(error_messages[error_message] + "<br>");
-                }
-
+            } else {
                 $('#message_error').text(data.message);
                 $("#error").css({"display": "block"});
             }
-
             $("#processing").css({"display": "none"});
         })
         .fail(function (data, status) {
@@ -102,6 +128,4 @@ function submit() {
             $("#error").css({"display": "block"});
             $("#processing").css({"display": "none"});
         });
-
-
 }
