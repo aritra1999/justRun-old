@@ -27,7 +27,7 @@ SECRET_KEY = 'ta%e!07@s)!ordh@(dr57iby=-436!rkntau(g+*twdfy9!n@3'
 DEBUG = False
 
 # ALLOWED_HOSTS = ['justrunbeta.herokuapp.com', 'localhost', '104.211.117.81', 'justrun.ml']
-ALLOWED_HOSTS = ['ec2-34-207-116-13.compute-1.amazonaws.com', '34.207.116.13`', 'localhost']
+ALLOWED_HOSTS = ['ec2-34-207-116-13.compute-1.amazonaws.com', '34.207.116.13', 'localhost', '']
 
 
 # Application definition
