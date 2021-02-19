@@ -24,10 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'ta%e!07@s)!ordh@(dr57iby=-436!rkntau(g+*twdfy9!n@3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # ALLOWED_HOSTS = ['justrunbeta.herokuapp.com', 'localhost', '104.211.117.81', 'justrun.ml']
-ALLOWED_HOSTS = ['ec2-100-27-14-27.compute-1.amazonaws.com', '100.27.14.27', 'localhost', 'justrun.ml', 'www']
+ALLOWED_HOSTS = ['localhost', 'justrun.ml', 'www.justrun.ml', '34.224.68.156', 'ec2-34-224-68-156.compute-1.amazonaws.com']
 
 
 # Application definition
@@ -125,10 +125,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "static")
+#]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-# STATIC_DIRS = [os.path.join(BASE_DIR, "static")]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

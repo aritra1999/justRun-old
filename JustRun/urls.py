@@ -12,5 +12,6 @@ urlpatterns = [
     path('', home_view, name='home'),
     path('run/', run, name='run'),
     path('log/', log_view, name='logs'),
-] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
+] 
+# + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
 # urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
