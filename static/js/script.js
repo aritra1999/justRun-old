@@ -22,7 +22,6 @@ editor.setOptions({
 editor.clearSelection();
 
 function startup() {
-
     let code = localStorage.getItem("code");
     let language = localStorage.getItem("language");
     let input = localStorage.getItem("input")
@@ -43,7 +42,6 @@ function startup() {
                 });
     }
 }
-
 
 function download(){
     var mimeType = document.getElementById('language').value;
@@ -68,7 +66,6 @@ function get_ext(lang) {
 }
 
 function changeLang(language) {
-
     fetch("static/code-template/template." + language.value)
         .then(response => response.text())
         .then(
@@ -86,8 +83,6 @@ function changeTheme(theme) {
 }
 
 function submit() {
-
-
     $("#processing").css({"display": "block"});
     $('#output').empty();
 
